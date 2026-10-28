@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué es el phishing? — Secura</title>
+<meta name="description" content="Qué es el phishing, la suplantación de identidad, los enlaces maliciosos y las tres formas en las que puede llegar.">
+<link rel="icon" href="logo.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  /* Aplica el tema guardado antes de pintar para evitar parpadeos */
+  (function(){
+    try{
+      const saved = localStorage.getItem('secura-theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if((saved || (prefersDark ? 'dark' : 'light')) === 'dark'){
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }catch(e){}
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="index.html">Saltar al contenido</a>
+
+<header class="site">
+  <div class="navbar">
+    <a class="brand" href="index.html" aria-label="Secura, ir al inicio">
+      <img class="logo-light" src="img/logo-nav-claro.png" width="62" height="64" alt="Secura">
+      <img class="logo-dark" src="img/logo-oscuro.png" width="58" height="64" alt="" aria-hidden="true">
+    </a>
+    <nav class="links" aria-label="Navegación principal">
+      <a href="index.html#verificacion">Verificación</a>
+      <a href="index.html#ayuda">Ayuda</a>
+      <a href="index.html#recursos">Otros recursos</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo oscuro" aria-pressed="false">
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M17 11.5A7.5 7.5 0 0 1 8.5 3 7.5 7.5 0 1 0 17 11.5Z" fill="currentColor"/>
+        </svg>
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <circle cx="10" cy="10" r="4" fill="currentColor"/>
+          <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <line x1="10" y1="1.2" x2="10" y2="3.4"/><line x1="10" y1="16.6" x2="10" y2="18.8"/>
+            <line x1="1.2" y1="10" x2="3.4" y2="10"/><line x1="16.6" y1="10" x2="18.8" y2="10"/>
+            <line x1="3.8" y1="3.8" x2="5.3" y2="5.3"/><line x1="14.7" y1="14.7" x2="16.2" y2="16.2"/>
+            <line x1="3.8" y1="16.2" x2="5.3" y2="14.7"/><line x1="14.7" y1="5.3" x2="16.2" y2="3.8"/>
+          </g>
+        </svg>
+      </button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Abrir menú">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+          <path d="M4 7h18M4 13h18M4 19h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Navegación móvil">
+    <a href="index.html#verificacion">Verificación</a>
+    <a href="index.html#ayuda">Ayuda</a>
+    <a href="index.html#recursos">Otros recursos</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="page-hero">
+    <div class="wrap">
+      <a class="back-link" href="index.html"><span aria-hidden="true">←</span> Volver al inicio</a>
+      <div class="section-head">
+        <h1 class="page-title">¿Qué es phishing?</h1>
+        <p>Es una técnica de <mark>ingeniería social</mark> que usa el cibercrimen para
+        obtener tus datos personales. El ataque casi siempre llega disfrazado de un mensaje
+        de una entidad de confianza: tu banco, una red social o una institución del
+        gobierno, pidiéndote que "verifiques" algo con urgencia.</p>
+      </div>
+
+      <p class="hint">Toca las tarjetas para darles la vuelta</p>
+      <div class="grid-2">
+        <button class="flip-card" type="button" aria-pressed="false">
+          <span class="flip-inner">
+            <span class="flip-face flip-front">
+              <span class="flip-icon" aria-hidden="true">🎭</span>
+              <span class="flip-title">Suplantación de identidad</span>
+              <span class="flip-tap" aria-hidden="true">Toca para leer ↻</span>
+            </span>
+            <span class="flip-face flip-back" aria-hidden="true">
+              <span class="flip-text">También llamada <em>spoofing</em>: alguien se hace pasar por una persona,
+              empresa o entidad para que el engaño parezca real. Puede ser un perfil falso
+              en redes sociales o una página web idéntica a la de tu banco.</span>
+              <span class="flip-tap" aria-hidden="true">Toca para volver ↻</span>
+            </span>
+          </span>
+        </button>
+        <button class="flip-card" type="button" aria-pressed="false">
+          <span class="flip-inner">
+            <span class="flip-face flip-front">
+              <span class="flip-icon" aria-hidden="true">🔗</span>
+              <span class="flip-title">Enlaces maliciosos</span>
+              <span class="flip-tap" aria-hidden="true">Toca para leer ↻</span>
+            </span>
+            <span class="flip-face flip-back" aria-hidden="true">
+              <span class="flip-text">Direcciones diseñadas para robar tus claves o instalar programas espía.
+              Suelen esconder su verdadero destino con acortadores o cambiando una sola
+              letra del nombre real.</span>
+              <span class="flip-tap" aria-hidden="true">Toca para volver ↻</span>
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRES FORMAS (carrusel deslizable) ============ -->
+  <section id="formas" class="section-paper">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Tres formas en las que puede llegar</h2>
+        <p>El nombre cambia según el medio, pero el objetivo es siempre el mismo:<br>
+        Hacer que entregues tus datos</p>
+      </div>
+
+      <div class="attack-carousel" id="attackCarousel" role="region" aria-roledescription="carrusel" aria-label="Tres formas en las que puede llegar el phishing">
+        <p class="swipe-hint">Desliza hacia el lado para ver más →</p>
+        <div class="attack-track" id="attackTrack" tabindex="0">
+
+          <!-- Slide 1: Phishing -->
+          <article class="attack-slide" aria-label="1 de 3: Phishing">
+            <div class="attack-card">
+              <div class="attack-text">
+                <div class="icon" aria-hidden="true">✉️</div>
+                <h3>Phishing</h3>
+                <p>Por correo electrónico. Busca robar tus datos mediante enlaces falsos que imitan a una entidad conocida.</p>
+              </div>
+              <figure class="attack-media">
+                <button class="zoom-btn" type="button" data-lightbox="img/correo-phishing.jpg" data-lightbox-title="Correo falso (phishing)" aria-haspopup="dialog">
+                  <img src="img/correo-phishing.jpg" width="1400" height="933" loading="lazy"
+                       alt="Ejemplo de correo falso del BCR con cinco señales marcadas: asunto alarmante, remitente extraño, mensaje que genera preocupación, enlace sospechoso y errores en el diseño.">
+                  <span class="zoom-label"><span aria-hidden="true">🔍</span> Ver imagen en grande</span>
+                </button>
+              </figure>
+            </div>
+          </article>
+
+          <!-- Slide 2: Smishing -->
+          <article class="attack-slide" aria-label="2 de 3: Smishing">
+            <div class="attack-card">
+              <div class="attack-text">
+                <div class="icon" aria-hidden="true">💬</div>
+                <h3>Smishing</h3>
+                <p>Igual, pero por mensajería: SMS o WhatsApp. A menudo llega como un "paquete pendiente" o una alerta bancaria.</p>
+              </div>
+              <figure class="attack-media">
+                <button class="zoom-btn" type="button" data-lightbox="img/smishing-sms.jpg" data-lightbox-title="Mensaje de texto falso (smishing)" aria-haspopup="dialog">
+                  <img src="img/smishing-sms.jpg" width="1504" height="838" loading="lazy"
+                       alt="Ejemplo de mensaje de texto falso del Banco Nacional con cuatro señales marcadas: número desconocido, falta de personalización, mensaje con urgencia y enlace sospechoso.">
+                  <span class="zoom-label"><span aria-hidden="true">🔍</span> Ver imagen en grande</span>
+                </button>
+              </figure>
+            </div>
+          </article>
+
+          <!-- Slide 3: Vishing -->
+          <article class="attack-slide" aria-label="3 de 3: Vishing">
+            <div class="attack-card">
+              <div class="attack-text">
+                <div class="icon" aria-hidden="true">📞</div>
+                <h3>Vishing</h3>
+                <p>Estafas realizadas mediante llamadas telefónicas de voz, donde alguien se hace pasar por soporte técnico o personal bancario.</p>
+              </div>
+              <figure class="attack-media">
+                <button class="zoom-btn" type="button" data-lightbox="img/vishing-banco-popular.jpg" data-lightbox-title="Llamada falsa (vishing)" aria-haspopup="dialog">
+                  <img src="img/vishing-banco-popular.jpg" width="1504" height="838" loading="lazy"
+                       alt="Ejemplo de llamada falsa del Banco Popular con cuatro señales marcadas: número desconocido, pide códigos o claves, mensaje con urgencia y te piden no colgar.">
+                  <span class="zoom-label"><span aria-hidden="true">🔍</span> Ver imagen en grande</span>
+                </button>
+              </figure>
+            </div>
+          </article>
+
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Anterior">←</button>
+          <div class="carousel-dots" role="group" aria-label="Elegir una de las tres formas">
+            <button class="carousel-dot active" type="button" aria-label="Phishing" aria-current="true" data-carousel-slide="0"></button>
+            <button class="carousel-dot" type="button" aria-label="Smishing" data-carousel-slide="1"></button>
+            <button class="carousel-dot" type="button" aria-label="Vishing" data-carousel-slide="2"></button>
+          </div>
+          <button class="carousel-arrow" type="button" data-carousel-next aria-label="Siguiente">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>¿Recibiste un enlace sospechoso?</h2>
+      <p>Compruébalo antes de abrirlo.</p>
+      <a class="btn btn-primary" href="index.html#verificacion">Verificar un enlace</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="footer-logo" src="img/logo-oscuro.png" width="96" alt="Secura">
+    <p style="max-width:60ch; color:var(--periwinkle); margin:0;">
+      Proyecto de investigación: ataques de ingeniería social en la GAM en la
+      población de adultos mayores en Costa Rica, 2025-2026.
+    </p>
+    <ul class="authors">
+      <li>Daniel Alejandro Alfaro Brenes</li>
+      <li>Asdriel Matías Chacón Rojas</li>
+      <li>Dereck Sebastián Marchena Cordero</li>
+      <li>Fabricio Morales Chacón</li>
+      <li>Luis Diego Rizo Romero</li>
+      <li>Randall Vindas Fallas</li>
+    </ul>
+    <p class="meta-line">Proyecto Expotec de ciberseguridad 2026</p>
+  </div>
+</footer>
+
+
+<dialog class="lightbox" id="lightbox" aria-labelledby="lightboxTitle">
+  <div class="lightbox-bar">
+    <span class="lightbox-title" id="lightboxTitle">Ejemplo de correo falso</span>
+    <button class="lightbox-close" type="button" id="lightboxClose"><span aria-hidden="true">✕</span> Cerrar imagen</button>
+  </div>
+  <div class="lightbox-scroll">
+    <img id="lightboxImg" src="" alt="">
+  </div>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>

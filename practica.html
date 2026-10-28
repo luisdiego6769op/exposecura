@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Señales de alerta — Secura</title>
+<meta name="description" content="Ejercicio práctico y repaso rápido para reconocer señales de alerta de phishing.">
+<link rel="icon" href="logo.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  /* Aplica el tema guardado antes de pintar para evitar parpadeos */
+  (function(){
+    try{
+      const saved = localStorage.getItem('secura-theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if((saved || (prefersDark ? 'dark' : 'light')) === 'dark'){
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }catch(e){}
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="index.html">Saltar al contenido</a>
+
+<header class="site">
+  <div class="navbar">
+    <a class="brand" href="index.html" aria-label="Secura, ir al inicio">
+      <img class="logo-light" src="img/logo-nav-claro.png" width="62" height="64" alt="Secura">
+      <img class="logo-dark" src="img/logo-oscuro.png" width="58" height="64" alt="" aria-hidden="true">
+    </a>
+    <nav class="links" aria-label="Navegación principal">
+      <a href="index.html#verificacion">Verificación</a>
+      <a href="index.html#ayuda">Ayuda</a>
+      <a href="index.html#recursos">Otros recursos</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo oscuro" aria-pressed="false">
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M17 11.5A7.5 7.5 0 0 1 8.5 3 7.5 7.5 0 1 0 17 11.5Z" fill="currentColor"/>
+        </svg>
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <circle cx="10" cy="10" r="4" fill="currentColor"/>
+          <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <line x1="10" y1="1.2" x2="10" y2="3.4"/><line x1="10" y1="16.6" x2="10" y2="18.8"/>
+            <line x1="1.2" y1="10" x2="3.4" y2="10"/><line x1="16.6" y1="10" x2="18.8" y2="10"/>
+            <line x1="3.8" y1="3.8" x2="5.3" y2="5.3"/><line x1="14.7" y1="14.7" x2="16.2" y2="16.2"/>
+            <line x1="3.8" y1="16.2" x2="5.3" y2="14.7"/><line x1="14.7" y1="5.3" x2="16.2" y2="3.8"/>
+          </g>
+        </svg>
+      </button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Abrir menú">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+          <path d="M4 7h18M4 13h18M4 19h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Navegación móvil">
+    <a href="index.html#verificacion">Verificación</a>
+    <a href="index.html#ayuda">Ayuda</a>
+    <a href="index.html#recursos">Otros recursos</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="page-hero">
+    <div class="wrap">
+      <a class="back-link" href="index.html"><span aria-hidden="true">←</span> Volver al inicio</a>
+      <h1 class="page-title">Señales de alerta</h1>
+    </div>
+  </section>
+
+  <!-- ============ EJERCICIO PRÁCTICO ============ -->
+  <section class="practice" id="ejercicio" aria-labelledby="ejercicio-titulo">
+    <div class="wrap">
+      <h2 id="ejercicio-titulo">Ejercicio práctico</h2>
+      <div class="practice-card">
+        <h3 class="practice-kicker">Ejemplo práctico</h3>
+        <p>Muchos enlaces falsos se ven casi idénticos a los reales. Elige un ejemplo, presiona el video y aprende.</p>
+        <div class="tabs" role="tablist" aria-label="Ejemplos de enlaces falsos">
+          <button class="tab-btn" role="tab" id="tab-p1" aria-controls="panel-p1" aria-selected="true" tabindex="0" type="button">Letra cambiada</button>
+          <button class="tab-btn" role="tab" id="tab-p2" aria-controls="panel-p2" aria-selected="false" tabindex="-1" type="button">Enlace acortado</button>
+          <button class="tab-btn" role="tab" id="tab-p3" aria-controls="panel-p3" aria-selected="false" tabindex="-1" type="button">Correo urgente</button>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-p1" aria-labelledby="tab-p1">
+          <figure class="media-slot">
+            <!-- ✏️ Reemplaza el div .media-empty por tu video:
+                 <video controls playsinline preload="metadata" poster="media/p1.jpg" src="media/p1.mp4"></video> -->
+            <div class="media-empty">Espacio para el video de “Letra cambiada”</div>
+          </figure>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-p2" aria-labelledby="tab-p2" hidden>
+          <figure class="media-slot">
+            <!-- ✏️ Reemplaza el div .media-empty por tu video:
+                 <video controls playsinline preload="metadata" poster="media/p2.jpg" src="media/p2.mp4"></video> -->
+            <div class="media-empty">Espacio para el video de “Enlace acortado”</div>
+          </figure>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-p3" aria-labelledby="tab-p3" hidden>
+          <figure class="media-slot">
+            <!-- ✏️ Reemplaza el div .media-empty por tu video:
+                 <video controls playsinline preload="metadata" poster="media/p3.jpg" src="media/p3.mp4"></video> -->
+            <div class="media-empty">Espacio para el video de “Correo urgente”</div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REPASO: MARCA LAS SEÑALES ============ -->
+  <section class="section-paper" id="repaso" aria-labelledby="repaso-titulo">
+    <div class="wrap">
+      <h2 id="repaso-titulo">Marca las señales que ya conozcas</h2>
+      <ul class="checklist" id="checklist">
+        <li><label><input type="checkbox"><span class="box" aria-hidden="true"></span><span>El mensaje te apura con una amenaza o un plazo corto</span></label></li>
+        <li><label><input type="checkbox"><span class="box" aria-hidden="true"></span><span>El remitente no coincide exactamente con la entidad real</span></label></li>
+        <li><label><input type="checkbox"><span class="box" aria-hidden="true"></span><span>Te piden clave, tarjeta o datos personales por enlace</span></label></li>
+        <li><label><input type="checkbox"><span class="box" aria-hidden="true"></span><span>El enlace usa un acortador o letras raras en el dominio</span></label></li>
+        <li><label><input type="checkbox"><span class="box" aria-hidden="true"></span><span>Recibiste el mensaje sin haberlo esperado</span></label></li>
+        <li><label><input type="checkbox"><span class="box" aria-hidden="true"></span><span>Hay errores de ortografía o redacción extraña</span></label></li>
+      </ul>
+      <div class="result-box" id="resultBox">
+        <p class="result-count" id="resultCount" aria-hidden="true">0 de 6 señales marcadas</p>
+        <p class="result-msg" id="resultMsg" role="status" aria-live="polite"></p>
+      </div>
+      <p class="result-link"><a href="index.html#verificacion">Comprueba un enlace en Verificación <span aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="footer-logo" src="img/logo-oscuro.png" width="96" alt="Secura">
+    <p style="max-width:60ch; color:var(--periwinkle); margin:0;">
+      Proyecto de investigación: ataques de ingeniería social en la GAM en la
+      población de adultos mayores en Costa Rica, 2025-2026.
+    </p>
+    <ul class="authors">
+      <li>Daniel Alejandro Alfaro Brenes</li>
+      <li>Asdriel Matías Chacón Rojas</li>
+      <li>Dereck Sebastián Marchena Cordero</li>
+      <li>Fabricio Morales Chacón</li>
+      <li>Luis Diego Rizo Romero</li>
+      <li>Randall Vindas Fallas</li>
+    </ul>
+    <p class="meta-line">Proyecto Expotec de ciberseguridad 2026</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

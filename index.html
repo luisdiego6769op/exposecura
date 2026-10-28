@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secura — Guía contra enlaces fraudulentos</title>
+<meta name="description" content="Secura es una guía para que las personas adultas mayores de la GAM reconozcan enlaces fraudulentos de entidades financieras.">
+<link rel="icon" href="logo.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  /* Aplica el tema guardado antes de pintar para evitar parpadeos */
+  (function(){
+    try{
+      const saved = localStorage.getItem('secura-theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if((saved || (prefersDark ? 'dark' : 'light')) === 'dark'){
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }catch(e){}
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#top">Saltar al contenido</a>
+
+<header class="site">
+  <div class="navbar">
+    <a class="brand" href="#top" aria-label="Secura, ir al inicio">
+      <img class="logo-light" src="img/logo-nav-claro.png" width="62" height="64" alt="Secura">
+      <img class="logo-dark" src="img/logo-oscuro.png" width="58" height="64" alt="" aria-hidden="true">
+    </a>
+    <nav class="links" aria-label="Navegación principal">
+      <a href="#verificacion">Verificación</a>
+      <a href="#ayuda">Ayuda</a>
+      <a href="#recursos">Otros recursos</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo oscuro" aria-pressed="false">
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M17 11.5A7.5 7.5 0 0 1 8.5 3 7.5 7.5 0 1 0 17 11.5Z" fill="currentColor"/>
+        </svg>
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <circle cx="10" cy="10" r="4" fill="currentColor"/>
+          <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <line x1="10" y1="1.2" x2="10" y2="3.4"/><line x1="10" y1="16.6" x2="10" y2="18.8"/>
+            <line x1="1.2" y1="10" x2="3.4" y2="10"/><line x1="16.6" y1="10" x2="18.8" y2="10"/>
+            <line x1="3.8" y1="3.8" x2="5.3" y2="5.3"/><line x1="14.7" y1="14.7" x2="16.2" y2="16.2"/>
+            <line x1="3.8" y1="16.2" x2="5.3" y2="14.7"/><line x1="14.7" y1="5.3" x2="16.2" y2="3.8"/>
+          </g>
+        </svg>
+      </button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Abrir menú">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+          <path d="M4 7h18M4 13h18M4 19h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Navegación móvil">
+    <a href="#verificacion">Verificación</a>
+    <a href="#ayuda">Ayuda</a>
+    <a href="#recursos">Otros recursos</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ INICIO ============ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Antes de hacer click, <em>revisa el enlace.</em></h1>
+        <p class="lead">Secura es una guía pensada para personas adultas mayores en la GAM,
+        para reconocer links de entidades financieras que buscan robar tu información
+        y tu dinero — explicado sin tecnicismos.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="que-es-phishing.html">¿Qué es el phishing?</a>
+          <a class="btn btn-ghost" href="practica.html">Señales de alerta</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="fake-msg">
+          <div class="from"><span aria-hidden="true">🏛️</span> “BANCO NACIONAL”</div>
+          <div>Su cuenta será suspendida hoy. Verifique sus datos de inmediato para evitar el bloqueo. Ingrese al siguiente enlace:</div>
+          <span class="url-fake">bancocr-verificacion.com/login</span>
+        </div>
+        <div class="callout">
+          <span aria-hidden="true">⚠️</span>
+          <span>Urgencia, mayúsculas y un enlace que no pertenece al banco real: tres señales típicas de phishing.</span>
+        </div>
+        <a class="btn btn-card" href="#verificacion">Verificar enlaces</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VERIFICACIÓN ============ -->
+  <section class="domain-checker" id="verificacion" aria-labelledby="verificacion-titulo">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="verificacion-titulo">Verificación de enlaces</h2>
+        <p class="sub">Pega la URL o obtén una guía rápida</p>
+      </div>
+
+      <form class="domain-checker-form" id="domainCheckerForm" novalidate>
+        <label for="urlToCheck">URL que quieres comprobar</label>
+        <div class="domain-checker-input">
+          <input id="urlToCheck" name="urlToCheck" type="url" placeholder="https://www.ejemplo.com" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+          <button class="btn btn-primary" type="submit">Comprobar enlace</button>
+          <button class="btn btn-ghost" type="button" id="guideToggle" aria-expanded="false" aria-controls="quickGuide">Guía rápida</button>
+        </div>
+      </form>
+      <div class="domain-result" id="domainResult" role="status" aria-live="polite" hidden></div>
+
+      <!-- Guía rápida: 4 pasos, cada uno con espacio para imagen o video -->
+      <div class="quick-guide" id="quickGuide" hidden>
+        <h3>Guía rápida: cómo copiar y pegar un enlace sin abrirlo</h3>
+        <ol class="guide-steps">
+
+          <li class="guide-step">
+            <div class="guide-text">
+              <span class="guide-num" aria-hidden="true">1</span>
+              <div>
+                <h4>Abre tu app de mensajería</h4>
+              </div>
+            </div>
+            <figure class="media-slot">
+              <!-- ✏️ Reemplaza el div .media-empty por una imagen o video:
+                   <img src="media/paso-1.jpg" alt="Describe la imagen">
+                   <video controls playsinline preload="metadata" src="media/paso-1.mp4"></video> -->
+              <div class="media-empty">Espacio para la imagen o video del paso 1</div>
+            </figure>
+          </li>
+
+          <li class="guide-step">
+            <div class="guide-text">
+              <span class="guide-num" aria-hidden="true">2</span>
+              <div>
+                <h4>¿Recibiste un enlace de una entidad financiera sospechosa?</h4>
+              </div>
+            </div>
+            <figure class="media-slot">
+              <!-- ✏️ Imagen o video del paso 2 (ver ejemplo en el paso 1) -->
+              <div class="media-empty">Espacio para la imagen o video del paso 2</div>
+            </figure>
+          </li>
+
+          <li class="guide-step">
+            <div class="guide-text">
+              <span class="guide-num" aria-hidden="true">3</span>
+              <div>
+                <h4>Cuidado, ¡no des clic!</h4>
+                <p>Selecciona el enlace por al menos 2 segundos y dale a la opción que dice <strong>copiar</strong>.</p>
+              </div>
+            </div>
+            <figure class="media-slot">
+              <!-- ✏️ Imagen o video del paso 3 (ver ejemplo en el paso 1) -->
+              <div class="media-empty">Espacio para la imagen o video del paso 3</div>
+            </figure>
+          </li>
+
+          <li class="guide-step">
+            <div class="guide-text">
+              <span class="guide-num" aria-hidden="true">4</span>
+              <div>
+                <h4>Pega el enlace aquí</h4>
+                <p>Mantén presionado el espacio donde se pone el enlace y dale al botón de <strong>pegar</strong>.</p>
+              </div>
+            </div>
+            <figure class="media-slot">
+              <!-- ✏️ Imagen o video del paso 4 (ver ejemplo en el paso 1) -->
+              <div class="media-empty">Espacio para la imagen o video del paso 4</div>
+            </figure>
+          </li>
+
+          <li class="guide-step">
+            <div class="guide-text">
+              <span class="guide-num" aria-hidden="true">5</span>
+              <div>
+                <h4>Comprueba el enlace</h4>
+                <p>Presiona “Comprobar enlace” y lee el resultado.</p>
+                <button class="btn btn-primary btn-small" type="button" id="goToChecker">Ir al verificador</button>
+              </div>
+            </div>
+            <figure class="media-slot">
+              <!-- ✏️ Imagen o video del paso 5 (ver ejemplo en el paso 1) -->
+              <div class="media-empty">Espacio para la imagen o video del paso 5</div>
+            </figure>
+          </li>
+
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AYUDA ============ -->
+  <section id="ayuda">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Qué hacer si crees que caíste</h2>
+        <p class="sub">Abrir el enlace no significa que te hayan robado la información, el riesgo aumenta cuando ingresas datos o descargas archivos.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <div class="num" aria-hidden="true">1</div>
+          <div><h3>Cambia tus contraseñas</h3><p>Si ingresaste alguna contraseña, cámbiala desde el sitio oficial.</p></div>
+        </li>
+        <li class="step">
+          <!-- 🔜 Aquí irá el selector de banco con su número de teléfono (pendiente) -->
+          <div class="num" aria-hidden="true">2</div>
+          <div><h3>Contacta a tu banco</h3><p>Si compartiste datos bancarios, contacta inmediatamente al banco mediante su número oficial.</p></div>
+        </li>
+        <li class="step">
+          <div class="num" aria-hidden="true">3</div>
+          <div><h3>Revisa tus dispositivos</h3><p>Si descargaste algún archivo sospechoso, no lo abras, desinstálalo o pide ayuda.</p></div>
+        </li>
+        <li class="step">
+          <div class="num" aria-hidden="true">4</div>
+          <div><h3>Pide ayuda y denuncia</h3><p>Cuéntale a alguien de confianza lo sucedido, guarda pruebas y denuncia al <a href="tel:800-8000-645">800-8000-645</a> (OIJ).</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ OTROS RECURSOS ============ -->
+  <section id="recursos" class="section-paper">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Otros sitios que te ayudan a verificar enlaces</h2>
+        <p class="sub">Estas páginas permiten analizar un enlace antes de abrirlo. Secura busca explicar lo mismo, pero con un lenguaje más sencillo.</p>
+      </div>
+      <div class="grid-3">
+        <div class="resource-card">
+          <h3>Google Safe Browsing</h3>
+          <p>Revisa si un sitio ha sido marcado como peligroso.</p>
+          <a class="go" href="https://transparencyreport.google.com/safe-browsing/search" target="_blank" rel="noopener">Consultar página <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="resource-card">
+          <h3>VirusTotal</h3>
+          <p>Analiza un enlace o archivo con múltiples motores de seguridad.</p>
+          <a class="go" href="https://www.virustotal.com" target="_blank" rel="noopener">Consultar página <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="resource-card">
+          <h3>PhishTank</h3>
+          <p>Base de datos comunitaria de sitios reportados como phishing.</p>
+          <a class="go" href="https://phishtank.org" target="_blank" rel="noopener">Consultar página <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="footer-logo" src="img/logo-oscuro.png" width="96" alt="Secura">
+    <p style="max-width:60ch; color:var(--periwinkle); margin:0;">
+      Proyecto de investigación: ataques de ingeniería social en la GAM en la
+      población de adultos mayores en Costa Rica, 2025-2026.
+    </p>
+    <ul class="authors">
+      <li>Daniel Alejandro Alfaro Brenes</li>
+      <li>Asdriel Matías Chacón Rojas</li>
+      <li>Dereck Sebastián Marchena Cordero</li>
+      <li>Fabricio Morales Chacón</li>
+      <li>Luis Diego Rizo Romero</li>
+      <li>Randall Vindas Fallas</li>
+    </ul>
+    <p class="meta-line">Proyecto Expotec de ciberseguridad 2026</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
